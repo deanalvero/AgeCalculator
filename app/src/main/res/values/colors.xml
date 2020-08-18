@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="color" name="CSPrimaryColorDark">#D32F2F</item>
+    <item type="color" name="CSPrimaryColor">#F44336</item>
+    <item type="color" name="CSPrimaryColorLight">#FFCDD2</item>
+    <item type="color" name="CSTextColor">#FFFFFF</item>
+    <item type="color" name="CSAccentColor">#FF9800</item>
+    <item type="color" name="CSTextColorPrimary">#212121</item>
+    <item type="color" name="CSTextColorSecondary">#727272</item>
+    <item type="color" name="CSDividerColor">#B6B6B6</item>
+
+
+</resources>

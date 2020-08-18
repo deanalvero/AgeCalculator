@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Age Calculator</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-9136073173828571/8189181846</string>
+
+    <string name="action_add_person">Add Person</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+
+    <string name="button_save">SAVE</string>
+    <string name="button_delete">DELETE</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="button_calculate">CALCULATE</string>
+
+    <string name="name">Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="today">Today</string>
+
+    <string name="next_birthday">Next Birthday</string>
+    <string name="age">Age</string>
+    <string name="age_years">Age in Years</string>
+    <string name="age_months">Age in Months</string>
+    <string name="age_weeks">Age in Weeks</string>
+    <string name="age_days">Age in Days</string>
+    <string name="age_hours">Age in Hours</string>
+    <string name="age_minutes">Age in Minutes</string>
+
+    <string name="format_birthdate">Birthdate: %s</string>
+    <string name="format_today">Today: %s</string>
+
+
+    <string name="format_age">%1$dY %2$dM %3$dD</string>
+    <string name="format_delete_person">Delete %s?</string>
+</resources>

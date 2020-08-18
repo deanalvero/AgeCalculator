@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/CSPrimaryColor</item>
+        <item name="colorPrimaryDark">@color/CSPrimaryColorDark</item>
+        <item name="colorAccent">@color/CSAccentColor</item>
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle</item>
+
+    </style>
+
+    <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/CSAccentColor</item>
+    </style>
+</resources>
