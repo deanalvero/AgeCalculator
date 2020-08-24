@@ -1,0 +1,89 @@
+package com.lowbottgames.agecalculator
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.lowbottgames.agecalculator.adapter.AgeListAdapter
+import com.lowbottgames.agecalculator.database.PersonModel
+import com.lowbottgames.agecalculator.dialog.InputDialogFragment
+import com.lowbottgames.agecalculator.viewmodel.AgeCalculatorViewModel
+import com.lowbottgames.agecalculator.viewmodel.AgeCalculatorViewModelFactory
+
+class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListener {
+
+    private lateinit var viewModel: AgeCalculatorViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        viewModel = ViewModelProvider(this, AgeCalculatorViewModelFactory(application)).get(AgeCalculatorViewModel::class.java)
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val ageListAdapter = AgeListAdapter()
+        ageListAdapter.listener = object : AgeListAdapter.AgeListAdapterListener {
+
+            override fun onItemClick(personModel: PersonModel) {
+                val intent = Intent(this@MainActivity, InfoActivity::class.java)
+                intent.putExtra(InfoActivity.KEY_ID, personModel.id)
+
+                startActivity(intent)
+            }
+        }
+        viewModel.persons.observe(this, Observer {
+            ageListAdapter.items = it
+            ageListAdapter.notifyDataSetChanged()
+        })
+
+        recyclerView.adapter = ageListAdapter
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val collapsingToolbarLayout: CollapsingToolbarLayout = findViewById(R.id.collapsingToolbar)
+        collapsingToolbarLayout.title = getString(R.string.app_name)
+
+        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
+            showInputFragment()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_add_person -> {
+                showInputFragment()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showInputFragment() {
+        val fragment = InputDialogFragment.newInstance()
+        fragment.show(supportFragmentManager, "InputDialogFragment")
+    }
+
+    override fun onInputSet(name: String, year: Int, month: Int, day: Int) {
+        val person = PersonModel(name = name, year = year, month = month, day = day)
+        viewModel.insert(person)
+    }
+
+}

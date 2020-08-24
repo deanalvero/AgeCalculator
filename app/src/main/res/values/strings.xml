@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Age Calculator</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-9136073173828571/8189181846</string>
-
     <string name="action_add_person">Add Person</string>
     <string name="action_delete">Delete</string>
     <string name="action_edit">Edit</string>
@@ -30,5 +28,6 @@
 
 
     <string name="format_age">%1$dY %2$dM %3$dD</string>
+    <string name="format_next_birthday">%dD</string>
     <string name="format_delete_person">Delete %s?</string>
 </resources>

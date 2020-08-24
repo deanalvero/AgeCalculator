@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lowbottgames.agecalculator" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
-        android:name=".AgeCalculatorApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_age_calculator"
         android:label="@string/app_name"
