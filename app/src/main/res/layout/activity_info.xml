@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/CSPrimaryColor"
-        app:layout_collapseMode="pin"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ScrollView
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-
-            android:focusable="true"
-            android:clickable="true"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
+            android:layout_marginRight="16dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
 
             <!--<TextView-->
@@ -55,8 +47,8 @@
                 android:id="@+id/textView_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/name"/>
+                android:text="@string/name"
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,8 +60,8 @@
                 android:id="@+id/textView_birthdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/birthdate"/>
+                android:text="@string/birthdate"
+                android:textSize="20sp"/>
 
 
             <TextView
@@ -82,8 +74,8 @@
                 android:id="@+id/textView_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/age"/>
+                android:text="@string/age"
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -95,8 +87,8 @@
                 android:id="@+id/textView_next_birthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/next_birthday"/>
+                android:text="@string/next_birthday"
+                android:textSize="20sp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -115,8 +107,8 @@
                 android:id="@+id/textView_age_years"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/age_years"/>
+                android:text="@string/age_years"
+                android:textSize="18sp"/>
 
 
 
@@ -131,8 +123,8 @@
                 android:id="@+id/textView_age_months"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/age_months"/>
+                android:text="@string/age_months"
+                android:textSize="18sp"/>
 
 
 
@@ -147,8 +139,8 @@
                 android:id="@+id/textView_age_weeks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/age_weeks"/>
+                android:text="@string/age_weeks"
+                android:textSize="18sp"/>
 
 
 
@@ -164,8 +156,8 @@
                 android:id="@+id/textView_age_days"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/age_days"/>
+                android:text="@string/age_days"
+                android:textSize="18sp"/>
 
 
 
@@ -181,8 +173,8 @@
                 android:id="@+id/textView_age_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/age_hours"/>
+                android:text="@string/age_hours"
+                android:textSize="18sp"/>
 
 
 
@@ -200,10 +192,22 @@
                 android:id="@+id/textView_age_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/age_minutes"
-                android:layout_marginBottom="16dp"/>
+                android:textSize="18sp"/>
 
         </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
+        app:hideOnScroll="true"
+        app:menu="@menu/menu_info"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

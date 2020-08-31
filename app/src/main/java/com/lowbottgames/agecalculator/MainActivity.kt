@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lowbottgames.agecalculator.adapter.AgeListAdapter
@@ -57,6 +58,12 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
             showInputFragment()
+        }
+
+        val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            ageListAdapter.notifyDataSetChanged()
         }
     }
 

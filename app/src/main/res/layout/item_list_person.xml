@@ -3,13 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="4dp"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
-    <!--
-    android:background="@drawable/row_highlight_color" -->
+    android:focusable="true"
+    android:paddingTop="8dp"
+    android:paddingBottom="4dp">
 
     <TextView
         android:id="@+id/textView_age"
@@ -18,8 +16,8 @@
 
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textSize="30sp"
-        android:text="@string/age"/>
+        android:text="@string/age"
+        android:textSize="30sp"/>
 
 
     <TextView
@@ -27,18 +25,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_age"
-        android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/birthdate"/>
+        android:text="@string/birthdate"
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/textView_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_birthdate"
-        android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/name"/>
+        android:text="@string/name"
+        android:textSize="16sp"/>
 </RelativeLayout>

@@ -9,6 +9,7 @@ import com.lowbottgames.agecalculator.R
 import com.lowbottgames.agecalculator.database.PersonModel
 import com.lowbottgames.agecalculator.util.DataHelper
 import org.joda.time.LocalDate
+import org.joda.time.LocalDateTime
 
 class AgeListAdapter : RecyclerView.Adapter<AgeListAdapter.AgeListViewHolder>() {
 
@@ -23,7 +24,7 @@ class AgeListAdapter : RecyclerView.Adapter<AgeListAdapter.AgeListViewHolder>() 
         fun bind(item: PersonModel) {
             textViewName.text = item.name
 
-            val birthdate = LocalDate(item.year, item.month + 1, item.day)
+            val birthdate = LocalDateTime(item.year, item.month + 1, item.day, 0, 0)
             textViewAge.text = DataHelper.age(birthdate)
             textViewBirthdate.text = birthdate.toString("dd MMMM YYYY")
         }

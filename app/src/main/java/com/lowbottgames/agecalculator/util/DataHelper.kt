@@ -1,13 +1,10 @@
 package com.lowbottgames.agecalculator.util
 
-import org.joda.time.Days
-import org.joda.time.LocalDate
-import org.joda.time.Period
-import org.joda.time.PeriodType
+import org.joda.time.*
 
 object DataHelper {
 
-    fun daysUntilNextBirthday(birthdate: LocalDate, now: LocalDate) : Int {
+    fun daysUntilNextBirthday(birthdate: LocalDateTime, now: LocalDateTime) : Int {
         val currBirthday = birthdate.withYear(now.year)
         val daysCurrent = Days.daysBetween(now, currBirthday).days
         val daysNext = Days.daysBetween(now, currBirthday.plusYears(1)).days
@@ -18,10 +15,10 @@ object DataHelper {
         }
     }
 
-    fun age(birthdate: LocalDate) : String {
-        val now = LocalDate()
-        val period = Period(birthdate, now, PeriodType.yearMonthDay())
-        return "${period.years}Y ${period.months}M ${period.days}D"
+    fun age(birthdate: LocalDateTime) : String {
+        val now = LocalDateTime()
+        val period = Period(birthdate, now, PeriodType.yearMonthDayTime())
+        return "${period.years}Y ${period.months}M ${period.days}D ${period.hours}h ${period.minutes}m"
     }
 
 }

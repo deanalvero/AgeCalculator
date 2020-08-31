@@ -27,7 +27,7 @@
     <string name="format_today">Today: %s</string>
 
 
-    <string name="format_age">%1$dY %2$dM %3$dD</string>
+    <string name="format_age">%1$dY %2$dM %3$dD %4$dh %5$dm</string>
     <string name="format_next_birthday">%dD</string>
     <string name="format_delete_person">Delete %s?</string>
 </resources>

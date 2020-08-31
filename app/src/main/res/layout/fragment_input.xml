@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fadeScrollbars="false"
     android:fillViewport="true"
     android:scrollbarAlwaysDrawHorizontalTrack="true"
-    android:fadeScrollbars="false"
     >
 
 <RelativeLayout
@@ -16,8 +16,8 @@
         android:id="@+id/textInputLayout_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="16dp">
         <!-- android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" -->
@@ -26,33 +26,32 @@
             android:id="@+id/editText_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
             android:gravity="center_horizontal"
-            android:inputType="textPersonName"
-            android:imeOptions="actionDone"/>
+            android:hint="@string/name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <TextView
         android:id="@+id/textView_birthdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayout_name"
-        android:textColor="@color/CSAccentColor"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/birthdate"/>
+        android:layout_marginRight="16dp"
+        android:text="@string/birthdate"
+        android:textColor="@color/colorAccent"/>
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_birthdate"
         android:layout_centerHorizontal="true"
-        android:datePickerMode="spinner"
         android:calendarViewShown="false"
-        android:spinnersShown="true"
+        android:datePickerMode="spinner"
 
-        android:layout_below="@+id/textView_birthdate"/>
+        android:spinnersShown="true"/>
 
 </RelativeLayout>
 </ScrollView>

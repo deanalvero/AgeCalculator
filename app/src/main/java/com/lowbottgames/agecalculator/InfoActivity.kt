@@ -2,28 +2,18 @@ package com.lowbottgames.agecalculator
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.lowbottgames.agecalculator.database.PersonModel
 import com.lowbottgames.agecalculator.dialog.InputDialogFragment
 import com.lowbottgames.agecalculator.util.DataHelper
 import com.lowbottgames.agecalculator.viewmodel.AgeCalculatorViewModel
 import com.lowbottgames.agecalculator.viewmodel.AgeCalculatorViewModelFactory
-import org.joda.time.Days
-import org.joda.time.Hours
-import org.joda.time.LocalDate
-import org.joda.time.Minutes
-import org.joda.time.Months
-import org.joda.time.Period
-import org.joda.time.PeriodType
-import org.joda.time.Weeks
-import org.joda.time.Years
+import org.joda.time.*
 
 class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListener {
 
@@ -55,19 +45,26 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
         viewModel = ViewModelProvider(this, AgeCalculatorViewModelFactory(application)).get(AgeCalculatorViewModel::class.java)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
+        val bottomAppBar: BottomAppBar = findViewById(R.id.bottomAppBar)
+        bottomAppBar.setNavigationOnClickListener {
+            finish()
+        }
+        bottomAppBar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.action_edit -> {
+                    showInputFragment()
+                    true
+                }
+                R.id.action_delete -> {
+                    showDeleteDialog()
+                    true
+                }
+                else -> false
+            }
         }
 
         intent.extras?.let { bundle ->
             id = bundle.getLong(KEY_ID)
-//            name = it.getString(KEY_NAME)
-//            year = it.getInt(KEY_YEAR)
-//            month = it.getInt(KEY_MONTH)
-//            day = it.getInt(KEY_DAY)
 
             viewModel.loadPersonById(id).observe(this, Observer {
                 personModel = it
@@ -92,14 +89,14 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         personModel?.let {
             textViewName.text = it.name
 
-            val birthdate = LocalDate(it.year, it.month + 1, it.day)
-            val now = LocalDate()
+            val birthdate = LocalDateTime(it.year, it.month + 1, it.day, 0, 0)
+            val now = LocalDateTime()
 
             textViewBirthdate.text = birthdate.toString("dd MMMM YYYY")
             textViewToday.text = now.toString("dd MMMM YYYY")
 
-            val period = Period(birthdate, now, PeriodType.yearMonthDay())
-            textViewAge.text = getString(R.string.format_age, period.years, period.months, period.days)
+            val period = Period(birthdate, now, PeriodType.yearMonthDayTime())
+            textViewAge.text = getString(R.string.format_age, period.years, period.months, period.days, period.hours, period.minutes)
 
             textViewNextBirthday.text = getString(R.string.format_next_birthday, DataHelper.daysUntilNextBirthday(birthdate, now))
             textViewAgeYears.text = "${Years.yearsBetween(birthdate, now).years}"
@@ -108,30 +105,6 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
             textViewAgeDays.text = "${Days.daysBetween(birthdate, now).days}"
             textViewAgeHours.text = "${Hours.hoursBetween(birthdate, now).hours}"
             textViewAgeMinutes.text = "${Minutes.minutesBetween(birthdate, now).minutes}"
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.menu_info, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                true
-            }
-            R.id.action_edit -> {
-                showInputFragment()
-                true
-            }
-            R.id.action_delete -> {
-                showDeleteDialog()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 
