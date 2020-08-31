@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.lowbottgames.agecalculator.adapter.AgeListAdapter
 import com.lowbottgames.agecalculator.database.PersonModel
 import com.lowbottgames.agecalculator.dialog.InputDialogFragment
@@ -23,6 +23,7 @@ import com.lowbottgames.agecalculator.viewmodel.AgeCalculatorViewModelFactory
 class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListener {
 
     private lateinit var viewModel: AgeCalculatorViewModel
+    private lateinit var ageListAdapter: AgeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val ageListAdapter = AgeListAdapter()
+        ageListAdapter = AgeListAdapter()
         ageListAdapter.listener = object : AgeListAdapter.AgeListAdapterListener {
 
             override fun onItemClick(personModel: PersonModel) {
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         val collapsingToolbarLayout: CollapsingToolbarLayout = findViewById(R.id.collapsingToolbar)
         collapsingToolbarLayout.title = getString(R.string.app_name)
 
-        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
+        findViewById<ExtendedFloatingActionButton>(R.id.extendedFloatingActionButton).setOnClickListener {
             showInputFragment()
         }
 
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_refresh -> {
+                ageListAdapter.notifyDataSetChanged()
+                true
+            }
             R.id.action_add_person -> {
                 showInputFragment()
                 true

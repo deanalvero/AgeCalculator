@@ -5,199 +5,215 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="100dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="100dp">
 
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="6dp"-->
-                <!--android:text="@string/today"/>-->
-
-            <TextView
-                android:id="@+id/textView_today"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"
-                android:text="@string/today"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/name"/>
-
-            <TextView
-                android:id="@+id/textView_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/birthdate"/>
-
-            <TextView
-                android:id="@+id/textView_birthdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/birthdate"
-                android:textSize="20sp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/age"/>
-
-            <TextView
-                android:id="@+id/textView_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/next_birthday"/>
-
-            <TextView
-                android:id="@+id/textView_next_birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/next_birthday"
-                android:textSize="20sp"/>
-
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#888888"/>
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_years"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
 
-            <TextView
-                android:id="@+id/textView_age_years"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_years"
-                android:textSize="18sp"/>
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/today"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/name"/>
 
+                <TextView
+                    android:id="@+id/textView_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="20sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_months"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/birthdate"/>
 
-            <TextView
-                android:id="@+id/textView_age_months"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_months"
-                android:textSize="18sp"/>
-
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_weeks"/>
-
-            <TextView
-                android:id="@+id/textView_age_weeks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_weeks"
-                android:textSize="18sp"/>
-
-
+                <TextView
+                    android:id="@+id/textView_birthdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birthdate"
+                    android:textSize="20sp"/>
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/age"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_days"/>
+                <TextView
+                    android:id="@+id/textView_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age"
+                    android:textSize="20sp"/>
 
-            <TextView
-                android:id="@+id/textView_age_days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_days"
-                android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/next_birthday"/>
+
+                <TextView
+                    android:id="@+id/textView_next_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next_birthday"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#888888"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_years"/>
+
+                <TextView
+                    android:id="@+id/textView_age_years"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_years"
+                    android:textSize="18sp"/>
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_months"/>
+
+                <TextView
+                    android:id="@+id/textView_age_months"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_months"
+                    android:textSize="18sp"/>
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_weeks"/>
+
+                <TextView
+                    android:id="@+id/textView_age_weeks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_weeks"
+                    android:textSize="18sp"/>
 
 
 
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_hours"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_days"/>
 
-            <TextView
-                android:id="@+id/textView_age_hours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age_hours"
-                android:textSize="18sp"/>
-
-
+                <TextView
+                    android:id="@+id/textView_age_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_days"
+                    android:textSize="18sp"/>
 
 
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/age_margin_top"
-                android:text="@string/age_minutes"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_hours"/>
+
+                <TextView
+                    android:id="@+id/textView_age_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_hours"
+                    android:textSize="18sp"/>
 
 
-            <TextView
-                android:id="@+id/textView_age_minutes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@string/age_minutes"
-                android:textSize="18sp"/>
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_minutes"/>
+
+
+                <TextView
+                    android:id="@+id/textView_age_minutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_minutes"
+                    android:textSize="18sp"/>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/age_margin_top"
+                    android:text="@string/age_seconds"/>
+
+                <TextView
+                    android:id="@+id/textView_age_seconds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_seconds"
+                    android:textSize="18sp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="16dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -210,4 +226,11 @@
         app:menu="@menu/menu_info"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_refresh_white_24"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bottomAppBar" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

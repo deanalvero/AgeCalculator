@@ -7,7 +7,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lowbottgames.agecalculator.database.PersonModel
 import com.lowbottgames.agecalculator.dialog.InputDialogFragment
 import com.lowbottgames.agecalculator.util.DataHelper
@@ -32,6 +34,7 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
     private lateinit var textViewAgeDays: TextView
     private lateinit var textViewAgeHours: TextView
     private lateinit var textViewAgeMinutes: TextView
+    private lateinit var textViewAgeSeconds: TextView
 
     private var id: Long = 0
 
@@ -51,6 +54,10 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         }
         bottomAppBar.setOnMenuItemClickListener {
             when(it.itemId) {
+                R.id.action_refresh -> {
+                    refreshUIViews(personModel)
+                    true
+                }
                 R.id.action_edit -> {
                     showInputFragment()
                     true
@@ -83,6 +90,17 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         textViewAgeDays = findViewById(R.id.textView_age_days)
         textViewAgeHours = findViewById(R.id.textView_age_hours)
         textViewAgeMinutes = findViewById(R.id.textView_age_minutes)
+        textViewAgeSeconds =  findViewById(R.id.textView_age_seconds)
+
+        val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            refreshUIViews(personModel)
+        }
+
+        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
+            refreshUIViews(personModel)
+        }
     }
 
     private fun refreshUIViews(personModel: PersonModel?) {
@@ -105,10 +123,12 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
             textViewAgeDays.text = "${Days.daysBetween(birthdate, now).days}"
             textViewAgeHours.text = "${Hours.hoursBetween(birthdate, now).hours}"
             textViewAgeMinutes.text = "${Minutes.minutesBetween(birthdate, now).minutes}"
+            textViewAgeSeconds.text = "${Seconds.secondsBetween(birthdate, now).seconds}"
+
         }
     }
 
-    fun showDeleteDialog() {
+    private fun showDeleteDialog() {
         personModel?.let {
             val builder = AlertDialog.Builder(this)
             builder.setMessage(getString(R.string.format_delete_person, it.name))
@@ -128,7 +148,7 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         }
     }
 
-    fun deletePerson() {
+    private fun deletePerson() {
         personModel?.let {
             viewModel.delete(it)
             finish()

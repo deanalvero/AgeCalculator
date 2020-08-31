@@ -22,6 +22,7 @@
     <string name="age_days">Age in Days</string>
     <string name="age_hours">Age in Hours</string>
     <string name="age_minutes">Age in Minutes</string>
+    <string name="age_seconds">Age in Seconds</string>
 
     <string name="format_birthdate">Birthdate: %s</string>
     <string name="format_today">Today: %s</string>
@@ -30,4 +31,6 @@
     <string name="format_age">%1$dY %2$dM %3$dD %4$dh %5$dm</string>
     <string name="format_next_birthday">%dD</string>
     <string name="format_delete_person">Delete %s?</string>
+    <string name="add_birthday">Add Birthday</string>
+    <string name="action_refresh">Refresh</string>
 </resources>
