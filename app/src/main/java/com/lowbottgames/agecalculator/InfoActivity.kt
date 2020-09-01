@@ -92,7 +92,6 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         textViewAgeDays = findViewById(R.id.textView_age_days)
         textViewAgeHours = findViewById(R.id.textView_age_hours)
         textViewAgeMinutes = findViewById(R.id.textView_age_minutes)
-        textViewAgeSeconds =  findViewById(R.id.textView_age_seconds)
 
         val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener {
@@ -126,7 +125,6 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
             textViewAgeDays.text = "${Days.daysBetween(birthdate, now).days}"
             textViewAgeHours.text = "${Hours.hoursBetween(birthdate, now).hours}"
             textViewAgeMinutes.text = "${Minutes.minutesBetween(birthdate, now).minutes}"
-            textViewAgeSeconds.text = "${Seconds.secondsBetween(birthdate, now).seconds}"
         }
     }
 

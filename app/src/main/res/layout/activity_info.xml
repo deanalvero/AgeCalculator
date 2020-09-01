@@ -205,21 +205,6 @@
                     android:text="@string/age_minutes"
                     android:textSize="18sp"/>
 
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/age_margin_top"
-                    android:text="@string/age_seconds"/>
-
-                <TextView
-                    android:id="@+id/textView_age_seconds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/age_seconds"
-                    android:textSize="18sp"/>
-
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="16dp" />
