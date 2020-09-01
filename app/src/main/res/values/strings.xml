@@ -12,6 +12,7 @@
 
     <string name="name">Name</string>
     <string name="birthdate">Birthdate</string>
+    <string name="birthtime">Birthtime</string>
     <string name="today">Today</string>
 
     <string name="next_birthday">Next Birthday</string>

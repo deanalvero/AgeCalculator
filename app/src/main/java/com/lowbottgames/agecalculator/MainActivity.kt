@@ -93,9 +93,15 @@ class MainActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         fragment.show(supportFragmentManager, "InputDialogFragment")
     }
 
-    override fun onInputSet(name: String, year: Int, month: Int, day: Int) {
-        val person = PersonModel(name = name, year = year, month = month, day = day)
+    override fun onInputSet(name: String, year: Int, month: Int, day: Int, hour: Int, minute: Int) {
+        val person = PersonModel(
+            name = name,
+            year = year,
+            month = month,
+            day = day,
+            hour = hour,
+            minute = minute
+        )
         viewModel.insert(person)
     }
-
 }

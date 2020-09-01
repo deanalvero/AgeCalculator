@@ -25,6 +25,7 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
     private lateinit var textViewName: TextView
     private lateinit var textViewBirthdate: TextView
+    private lateinit var textViewBirthtime: TextView
     private lateinit var textViewToday: TextView
     private lateinit var textViewAge: TextView
     private lateinit var textViewNextBirthday: TextView
@@ -81,6 +82,7 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
         textViewName = findViewById(R.id.textView_name)
         textViewBirthdate = findViewById(R.id.textView_birthdate)
+        textViewBirthtime = findViewById(R.id.textView_birthtime)
         textViewToday = findViewById(R.id.textView_today)
         textViewAge = findViewById(R.id.textView_age)
         textViewNextBirthday = findViewById(R.id.textView_next_birthday)
@@ -107,10 +109,11 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         personModel?.let {
             textViewName.text = it.name
 
-            val birthdate = LocalDateTime(it.year, it.month + 1, it.day, 0, 0)
+            val birthdate = LocalDateTime(it.year, it.month + 1, it.day, it.hour, it.minute)
             val now = LocalDateTime()
 
             textViewBirthdate.text = birthdate.toString("dd MMMM YYYY")
+            textViewBirthtime.text = birthdate.toString("hh:mm aa")
             textViewToday.text = now.toString("dd MMMM YYYY")
 
             val period = Period(birthdate, now, PeriodType.yearMonthDayTime())
@@ -124,7 +127,6 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
             textViewAgeHours.text = "${Hours.hoursBetween(birthdate, now).hours}"
             textViewAgeMinutes.text = "${Minutes.minutesBetween(birthdate, now).minutes}"
             textViewAgeSeconds.text = "${Seconds.secondsBetween(birthdate, now).seconds}"
-
         }
     }
 
@@ -143,7 +145,7 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
 
     private fun showInputFragment() {
         personModel?.let {
-            val fragment = InputDialogFragment.newInstance(id, it.name, it.year, it.month, it.day)
+            val fragment = InputDialogFragment.newInstance(id, it.name, it.year, it.month, it.day, 0, 0)
             fragment.show(supportFragmentManager, "InputDialogFragment")
         }
     }
@@ -155,12 +157,14 @@ class InfoActivity : AppCompatActivity(), InputDialogFragment.DPFOnDateSetListen
         }
     }
 
-    override fun onInputSet(name: String, year: Int, month: Int, day: Int) {
+    override fun onInputSet(name: String, year: Int, month: Int, day: Int, hour: Int, minute: Int) {
         personModel?.let {
             it.name = name
             it.year = year
             it.month = month
             it.day = day
+            it.hour = hour
+            it.minute = minute
 
             viewModel.update(personModel!!)
         }

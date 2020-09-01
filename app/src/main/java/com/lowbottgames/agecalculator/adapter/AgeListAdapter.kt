@@ -24,7 +24,7 @@ class AgeListAdapter : RecyclerView.Adapter<AgeListAdapter.AgeListViewHolder>() 
         fun bind(item: PersonModel) {
             textViewName.text = item.name
 
-            val birthdate = LocalDateTime(item.year, item.month + 1, item.day, 0, 0)
+            val birthdate = LocalDateTime(item.year, item.month + 1, item.day, item.hour, item.minute)
             textViewAge.text = DataHelper.age(birthdate)
             textViewBirthdate.text = birthdate.toString("dd MMMM YYYY")
         }

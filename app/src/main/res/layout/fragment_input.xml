@@ -5,53 +5,65 @@
     android:layout_height="match_parent"
     android:fadeScrollbars="false"
     android:fillViewport="true"
-    android:scrollbarAlwaysDrawHorizontalTrack="true"
-    >
+    android:scrollbarAlwaysDrawHorizontalTrack="true">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp">
-        <!-- android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" -->
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText_name"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/textInputLayout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:hint="@string/name"
-            android:imeOptions="actionDone"
-            android:inputType="textPersonName"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp">
 
-    <TextView
-        android:id="@+id/textView_birthdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textInputLayout_name"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/birthdate"
-        android:textColor="@color/colorAccent"/>
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_birthdate"
-        android:layout_centerHorizontal="true"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
+            <EditText
+                android:id="@+id/editText_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="@string/name"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        android:spinnersShown="true"/>
+        <TextView
+            android:id="@+id/textView_birthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/birthdate"
+            android:textColor="@color/colorPrimaryDark"/>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_birthdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/textView_birthtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/birthtime"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <Button
+            android:id="@+id/button_birthtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
 </ScrollView>
